@@ -2,10 +2,25 @@ from flask import Flask, render_template
 from os import environ
 app = Flask(__name__)
 
+posts = [
+    {
+        'author'    :   'Cory Schafer',
+        'title'     :   'Blog Post 1',
+        'C=content'   :   'First Post Content',
+        'date_posted'   :   'April 16, 2023',
+    },
+    {
+        'author'    :   'Jane Doe',
+        'title'     :   'Blog Post 2',
+        'C=content'   :   'Second Post Content',
+        'date_posted'   :   'April 15, 2023',
+    },
+]
+
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html')
+    return render_template('home.html', posts=posts)
 
 @app.route("/about")
 def about():
